@@ -10,7 +10,15 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
-const { url } = require('./config/db');
+const dbconf = require('./config/db');
+
+var url = null;
+const TEST = true;
+if(TEST){
+    url = dbconf.test.url;
+}else{
+    url = dbconf.development.url;
+}
 
 mongoose.connect(url, function(err){
     if(!err){
