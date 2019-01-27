@@ -9,17 +9,14 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const googleMapsClient = require('@google/maps');
+
 
 const dbconf = require('./config/db');
+console.log(process.env['NODE_ENV']);
+const enviroment = process.env['NODE_ENV'] || "dev";
 
-var url = null;
-const TEST = true;
-if(TEST){
-    url = dbconf.test.url;
-}else{
-    url = dbconf.development.url;
-}
-
+var url = dbconf[enviroment].url;
 mongoose.connect(url, function(err){
     if(!err){
         console.log("Connection to db has been executed successfully");
