@@ -16,7 +16,7 @@ mongoose.connect(url, function(err){
     if(!err){
         console.log("Connection to db has been executed successfully");
     }else{
-        console.log("There's a problem with the db");
+        console.log(`There's a problem with the db ${JSON.stringify(err)}`);
     }
 });
 
