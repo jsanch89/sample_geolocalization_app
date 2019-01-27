@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Geolocalization App</title>
+        <% include partials/head %>
+    </head>
+    <body class="signup">
+        <div class="container">
+            <div class="col-sm-6 mx-auto">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h1 class="text-center">
+                            <span class="fa fa-user"></span> Registro
+                        </h1>
+                        <% if(message.length > 0) {%>
+                            <div class="alert alert-danger">
+                                <%= message %>
+                            </div>
+                        <% } %>
+                        <form action="/signup" method="post">
+                            <div class="form-group">
+                                <label for="fullname">Nombre Completo</label>
+                                <input type="text" name="fullname" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo</label>
+                                <input type="email" name="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Contrase&ntilde;a</label>
+                                <input type="password" name="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                    <label for="confirmation">Confirmaci&oacute;n</label>
+                                    <input type="password" name="confirmation" class="form-control">
+                                </div>
+                            <input type="submit" class="btn btn-primary btn-lg">
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <p>¿Ya tienes una cuenta? <a href="/login">Iniciar Sesi&oacute;n</a></p>
+                            <p>Ir al Inicio <a href="/">Inicio</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+</html>
