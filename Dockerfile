@@ -1,0 +1,19 @@
+FROM node:11.8.0-slim
+
+LABEL version="1.0"
+LABEL description="Geolocalization App"
+LABEL maintainer="Anderson Grajales - agrajal7@eafit.edu.co"
+
+ARG PORT=3000
+ENV PORT $PORT
+
+
+RUN mkdir geolocalization_app
+
+WORKDIR /geolocalization_app
+COPY . ./
+
+RUN npm install --test
+
+EXPOSE 3000
+CMD npm start
