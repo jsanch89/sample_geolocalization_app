@@ -13,7 +13,7 @@ RUN mkdir geolocalization_app
 WORKDIR /geolocalization_app
 COPY . ./
 
-RUN npm install --test
+RUN npm install
 
 EXPOSE 3000
-CMD npm start
+CMD npm test
