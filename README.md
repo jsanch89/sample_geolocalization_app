@@ -62,26 +62,82 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
   }
 ```
 # 2. Tecnología Usada
-Para construir la aplicación especificada se usó [Node JS](https://nodejs.org/es/), [Bootstrap 4](https://getbootstrap.com/), [Mongo DB](https://www.mongodb.com/es) y [Docker](https://www.docker.com/).
-# 3. Desplegar en el DCA y AWS
+- Servidor de aplicación [Node JS](https://nodejs.org/es/), [Express JS Framework](https://expressjs.com/es/)
+- Servidor Web [Nginx] (https://www.nginx.com/)
+- Framework de Diseño [Bootstrap 4](https://getbootstrap.com/)
+- Base de Datos [Mongo DB](https://www.mongodb.com/es)
+- Contenedor [Docker](https://www.docker.com/).
+# 3. Desplegar en el DCA
+## Crear un certificado `ssl`:
+
+Entrar en el directorio `home`:
+
+```sh
+user1$ cd ~
+```
+
+Luego, crear el certificado `ssl`:
+
+```sh
+user1$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl/nginx.key -out ssl/nginx.crt
+```
+
 ## Instalación
 
 Primero, instalar `git`:
 
 ```sh
-$ sudo yum install git
+user1$ sudo yum install git
 ```
 
 
 Clonar este repositorio en el `home` de su máquina:
 
 ```
-$ cd ~
-$ git clone https://github.com/angrajales/sample_geolocalization_app.git
+user1$ cd ~
+user1$ git clone https://github.com/angrajales/sample_geolocalization_app.git
 ```
 
-Instalar e inicializar `docker` en su máquina:
+Instalar e inicializar `docker` en su máquina(En caso de que aún no lo tenga instalado):
 ```
-$ sudo yum install docker
-$ sudo service docker start
+source: https://docs.docker.com/install/linux/docker-ce/centos/
+
+user1$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+user1$ sudo yum install docker-ce
+user1$ sudo systemctl start docker
+user1$ sudo systemctl enable docker
+
+instalar docker-compose: https://docs.docker.com/compose/install/
+
+user1$ sudo curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+user1$ sudo chmod +x /usr/local/bin/docker-compose
+
 ```
+## Desplegar
+
+Entrar al proyecto:
+
+```
+user1$ cd sample_geolocalization_app
+```
+
+Luego, crear el contenedor de `docker`:
+
+```
+user1$ docker-compose build
+```
+
+Finalmente, ejecutar el contenedor de `docker`:
+
+```
+user1$ docker-compose up
+```
+
+O si quieres que se ejecute en modo `detach`:
+
+```
+user1$ docker-compose up -d
+```
+
+
+
