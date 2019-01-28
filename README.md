@@ -64,5 +64,24 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
 # 2. Tecnología Usada
 Para construir la aplicación especificada se usó [Node JS](https://nodejs.org/es/), [Bootstrap 4](https://getbootstrap.com/), [Mongo DB](https://www.mongodb.com/es) y [Docker](https://www.docker.com/).
 # 3. Desplegar en el DCA y AWS
-## 3.1. Desplegar en el DCA
+## Instalación
 
+Primero, instalar `git`:
+
+```sh
+$ sudo yum install git
+```
+
+
+Clonar este repositorio en el `home` de su máquina:
+
+```
+$ cd ~
+$ git clone https://github.com/angrajales/sample_geolocalization_app.git
+```
+
+Instalar e inicializar `docker` en su máquina:
+```
+$ sudo yum install docker
+$ sudo service docker start
+```
