@@ -1,3 +1,4 @@
+const Location = require('./models/location');
 module.exports = (app, passport) => {
     app.get('/', (req, res) => {
         res.render('index');
@@ -26,7 +27,6 @@ module.exports = (app, passport) => {
     }));
 
     app.get('/profile', isLoggedIn, (req, res) => {
-        console.log(req.user);
         res.render('profile', {
             user: req.user,
             locations: req.locations
@@ -37,6 +37,24 @@ module.exports = (app, passport) => {
         req.logout();
         res.redirect('/');
     });
+
+    app.get('/location', isLoggedIn, (req, res) =>{ 
+        Location.find({user: req.user.local.email}, (err, locations) =>{
+            if(err) return res.status(500).send(err);
+            return res.status(200).send(locations);
+        });
+    })
+    app.post('/location', (req, res) => {
+        const loc = new Location();
+        loc.longitude = req.body.longitude;
+        loc.latitude = req.body.latitude;
+        loc.user = req.user.local.email;
+        loc.save((err, location) => {
+            if(err) return res.status(500).send(err);
+            return res.status(200).send(location);
+        });
+        
+    })
 };
 
 function isLoggedIn(req, res, next) {
