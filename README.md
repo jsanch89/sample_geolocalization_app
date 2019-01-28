@@ -2,7 +2,7 @@
 ## By: Anderson Grajales - agrajal7@eafit.edu.co
 ## 2019-1
 ## Descripción
-Ésta aplicación permite a sus usuarios llevar un registro de todas aquellos lugares que han visitado. Además, el usuario tiene la posibilidad de visualizarlos en un mapa que es cargado una vez el usuario está registrado.
+Ésta aplicación permite a sus usuarios llevar un registro de todos aquellos lugares que han visitado. Además, el usuario tiene la posibilidad de visualizarlos en un mapa que es cargado una vez el usuario está registrado.
 
 # 1. Análisis y Diseño
 
