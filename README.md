@@ -62,10 +62,10 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
   }
 ```
 # 2. Tecnología Usada
-- Servidor de aplicación [Node JS](https://nodejs.org/es/), [Express JS Framework](https://expressjs.com/es/)
-- Servidor Web [Nginx] (https://www.nginx.com/)
-- Framework de Diseño [Bootstrap 4](https://getbootstrap.com/)
-- Base de Datos [Mongo DB](https://www.mongodb.com/es)
+- Servidor de aplicación [Node JS](https://nodejs.org/es/), [Express JS Framework](https://expressjs.com/es/).
+- Servidor Web [Nginx](https://www.nginx.com/).
+- Framework de Diseño [Bootstrap 4](https://getbootstrap.com/).
+- Base de Datos [Mongo DB](https://www.mongodb.com/es).
 - Contenedor [Docker](https://www.docker.com/).
 # 3. Desplegar en el DCA
 ## Crear un certificado `ssl`:
@@ -84,7 +84,7 @@ user1$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl/ngin
 
 ## Instalación
 
-Primero, instalar `git`:
+Primero, instalar `git` (En caso de que aún no lo tenga instalado):
 
 ```sh
 user1$ sudo yum install git
