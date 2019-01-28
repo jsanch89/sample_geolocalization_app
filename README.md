@@ -62,4 +62,4 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
   }
 ```
 # 2. Tecnología Usada
-Para construir la aplicación especificada se usó [Node JS](https://nodejs.org/es/), Bootstrap 4 [https://getbootstrap.com/], Mongo DB[https://www.mongodb.com/es] y Docker[https://www.docker.com/].
+Para construir la aplicación especificada se usó [Node JS](https://nodejs.org/es/), [Bootstrap 4](https://getbootstrap.com/), [Mongo DB](https://www.mongodb.com/es) y [Docker](https://www.docker.com/).
