@@ -39,6 +39,7 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
   }
 ```
 ### 1.3.1 Una ubicación dentro de la aplicación está identifacada con los siguientes atributos:
+```
   Location: {
     logitude: {
       type: Number,
@@ -59,4 +60,5 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
       default_value: (Current Date with Current Hour)
     }
   }
+```
 # 2. Tecnología Usada
