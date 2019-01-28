@@ -68,19 +68,6 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
 - Base de Datos [Mongo DB](https://www.mongodb.com/es).
 - Contenedor [Docker](https://www.docker.com/).
 # 3. Desplegar en el DCA
-## Crear un certificado `ssl`:
-
-Entrar en el directorio `home`:
-
-```sh
-user1$ cd ~
-```
-
-Luego, crear el certificado `ssl`:
-
-```sh
-user1$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl/nginx.key -out ssl/nginx.crt
-```
 
 ## Instalación
 
@@ -113,15 +100,22 @@ user1$ sudo curl -L https://github.com/docker/compose/releases/download/1.20.1/d
 user1$ sudo chmod +x /usr/local/bin/docker-compose
 
 ```
-## Desplegar
+## Crear un certificado `ssl`:
 
-Entrar al proyecto:
+Entrar a la carpeta del proyecto `sample_geolocalization_app`:
 
-```
+```sh
 user1$ cd sample_geolocalization_app
 ```
 
-Luego, crear el contenedor de `docker`:
+Luego, crear el certificado `ssl`:
+
+```sh
+user1$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ssl/nginx.key -out ssl/nginx.crt
+```
+## Desplegar
+
+Crear el contenedor de `docker`:
 
 ```
 user1$ docker-compose build
