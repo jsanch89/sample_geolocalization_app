@@ -7,10 +7,10 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
 # 1. Análisis y Diseño
 
 ## 1.1 Requisitos Funcionales
-  1.1.1 La aplicación debe permitir el incio de sesión de un usuario previamente registrado.
-  1.1.2 La aplicación debe permitir a las personas crear una cuenta teniendo su nombre, e-mail y contraseña.  
-  1.1.3 La aplicación debe permitir a sus usuarios registrar las ubicaciones que quieran recordar.
-  1.1.4 La aplicación debe mostrar a sus usuarios todas los lugares que han escogido como sus favoritos.
+- 1.1.1 La aplicación debe permitir el incio de sesión de un usuario previamente registrado.
+- 1.1.2 La aplicación debe permitir a las personas crear una cuenta teniendo su nombre, e-mail y contraseña.  
+- 1.1.3 La aplicación debe permitir a sus usuarios registrar las ubicaciones que quieran recordar.
+- 1.1.4 La aplicación debe mostrar a sus usuarios todas los lugares que han escogido como sus favoritos.
 
 ## 1.2 Requisitos No Funcionales
 
