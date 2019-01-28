@@ -15,14 +15,14 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
 ## 1.2 Requisitos No Funcionales
   * La aplicación no debe permitir a un usuario acceder al perfil de otro usuario.
   * La aplicación no debe permitir a un usuario revisar las rutas si no se ha entrado en el sistema previamente.
-  * 1.2.3 La aplicación debe estar disponible todo el tiempo para un usuario.
-  * 1.2.4 La aplicación debe admitir almenos x usuarios activos.
-  * 1.2.5 En el momento de cerrar sesión la aplicación no debe permitir a un usuario ingresar nuevamente ha su perfil, a menos de que vuelva a iniciar sesión.
+  * La aplicación debe estar disponible todo el tiempo para un usuario.
+  * La aplicación debe admitir almenos x usuarios activos.
+  * En el momento de cerrar sesión la aplicación no debe permitir a un usuario ingresar nuevamente ha su perfil, a menos de que vuelva a iniciar sesión.
 
 ## 1.3 Modelo de Datos
 
 ### 1.3.1 Un usuario dentro de la aplicación está identificado con los siguientes atributos:
-
+```
   User: {
     fullName: {
       type: String,
@@ -37,7 +37,7 @@ Esta aplicación permite a sus usuarios llevar un registro de todas aquellos lug
       required: true
     }
   }
-
+```
 ### 1.3.1 Una ubicación dentro de la aplicación está identifacada con los siguientes atributos:
   Location: {
     logitude: {
