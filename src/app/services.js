@@ -31,9 +31,11 @@ module.exports = (app, passport) => {
         LocationControler.findLocation(req.user.local.email, (err, locs) => {
             if(err){
                 res.render('location', {
-                    user: req.user
+                    user: req.user,
+                    locations: []
                 });
             }else {
+                console.log(locs);
                 res.render('location', {
                     user: req.user,
                     locations: JSON.stringify(locs)
@@ -45,19 +47,27 @@ module.exports = (app, passport) => {
         req.logout();
         res.redirect('/');
     });
-    app.post('/location', isLoggedIn, (req, res) => {
-        LocationControler.saveLocation(req, (err, loc) => {
-            if(err){
-                res.render('location', {
-                    user: req.user
-                });
-            }else{
-                res.render('location', {
-                    user: req.user,
-                    message: "Guardada correctamente"
-                });
+
+    app.post('/location/register', isLoggedIn, (req, res) => {
+        var data = {};
+        data.latitude = req.body.latitude;
+        data.longitude = req.body.longitude;
+        data.user = req.body.user;
+        LocationControler.findSpecLocation(data, (err, loc) => {
+            if(!err){
+                if(loc == null){
+                    LocationControler.saveLocation(data, (er, lc) => {
+                        if(!er){
+                            console.log("Loc saved");
+                        }
+                    });
+                }
             }
         });
+    });
+
+    app.get('/location/register', isLoggedIn, (req, res) => {
+        res.redirect("/location");
     });
 };
 

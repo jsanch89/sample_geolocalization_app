@@ -10,11 +10,21 @@ exports.findLocation = function(user, next) {
     });
 }
 
-exports.saveLocation = (req, next) => {
+exports.findSpecLocation = function(loc, next){
+    Location.findOne({user: loc.user, latitude: loc.latitude, longitude: loc.longitude}, (err, loc) => {
+        if(err){
+            next(err, null);
+        }else{
+            next(null, loc);
+        }
+    });
+}
+
+exports.saveLocation = (formData, next) => {
     var location = new Location();
-    location.longitude = req.body.longitude;
-    location.latitude = req.body.latitude;
-    location.user = req.user.local.email;
+    location.longitude = formData.longitude;
+    location.latitude = formData.latitude;
+    location.user = formData.user;
     location.save((err, loc) => {
         if(err) next(err, null);
         else next(null, loc);

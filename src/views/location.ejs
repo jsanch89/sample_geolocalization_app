@@ -13,27 +13,34 @@
         
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/profile">Página Principal</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/location">Geolocalization App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/profile">Inicio <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <%= user.local.email %>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="/logout">Cerrar Sesi&oacute;n</a>
-                        </div>
-                    </li>
-                </ul>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= user.local.email %>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/logout">Cerrar Sesi&oacute;n</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" id="strack" href="/location/register">Iniciar Tracking</a>
+                    <a class="dropdown-item" id="ftrack" href="/location/dregister">Finalizar Tracking</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" id="utrack" href="/location">Actualizar Tracking</a>
+                  </div>
+                </li>
+              </ul>
             </div>
-        </nav>
+          </nav>
+        <h1 id="tracking" class="disabled"></h1>
         <div id="mapid"></div>
         <% locs = JSON.parse(locations)%>
         <% var long = []; %>
@@ -42,7 +49,12 @@
             <% long.push(locs[i]['longitude']) %>
             <% lati.push(locs[i]['latitude']) %>
         <% } %>
-        <% console.log(long) %>
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         <script type="text/javascript">
             var initLong = [];
             var initLati = [];
@@ -57,7 +69,7 @@
             var mymap = L.map('mapid');
             //alert(initLati);
             if(initLati.length > 0){
-                mymap.setView([initLati[0], initLong[0]], 13);
+                mymap.setView([4.6097100, -74.0817500], 13);
             }
             L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		        maxZoom: 18,
@@ -70,9 +82,50 @@
                 var marker = L.marker([initLati[i], initLong[i]]).addTo(mymap);
             }
         </script>
-        <h1 class="text-center" style="color: #FFFFFF;">Buenos dias <strong><%= user.local.fullName %></strong></h1>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>    
+        <script type="text/javascript">
+            $("#strack").click((e) => {
+                e.preventDefault();
+                $("#strack").addClass("disabled");
+                $("#tracking").removeClass("disabled");
+                $("#ftrack").removeClass("disabled");
+            });
+            $("#ftrack").click((e) => {
+                e.preventDefault();
+                $("#strack").removeClass("disabled");
+                $("#tracking").addClass("disabled");
+                $("#ftrack").addClass("disabled");
+            });
+            function autoUpdate() {
+                navigator.geolocation.getCurrentPosition(function(position) {  
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    var toTrack = $("#tracking").hasClass("disabled");
+                    if(!toTrack){
+                        var formData = {};
+                        formData.longitude = longitude;
+                        formData.latitude = latitude;
+                        formData.user = "<%=user.local.email %>";
+                        formData.curdate = Date.now();
+                        //alert("Tracking " + JSON.stringify(formData));
+                        $.ajax({
+                            type: 'POST',
+                            contentType : "application/json",
+			                      url : window.location + "/register",
+			                      data : JSON.stringify(formData),
+			                      dataType : 'json',
+			                      success : function(customer) {
+                                alert("Sending " + JSON.stringify(formData));
+                            },
+			                      error : function(e) {
+                              console.log("ERROR: ", e);
+                              alert("Error " + e);
+			                      }
+                        });
+                    }
+                    setTimeout(autoUpdate, 5000);
+                });
+            }
+            autoUpdate();
+        </script>
     </body>
 </html>

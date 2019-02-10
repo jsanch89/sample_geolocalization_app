@@ -22,11 +22,9 @@ mongoose.connect(url, function(err){
     if(!err){
         console.log("Connection to db has been executed successfully");
     }else{
-        console.log(err);
         console.log(`There's a problem with the db ${JSON.stringify(err)}`);
     }
 });
-
 require('./config/passport')(passport);
 
 // Settings
@@ -39,6 +37,7 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(session({
     secret: 'dog',
     resave: false,
