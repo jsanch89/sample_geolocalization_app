@@ -6,8 +6,6 @@ LABEL maintainer="Anderson Grajales - agrajal7@eafit.edu.co"
 
 ARG PORT=3000
 ENV PORT $PORT
-ARG RUNENV=start
-
 
 RUN mkdir geolocalization_app
 
@@ -17,4 +15,4 @@ COPY . ./
 RUN npm install
 
 EXPOSE 3000
-CMD npm ${RUNENV}
+CMD npm run test
