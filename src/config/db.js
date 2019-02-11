@@ -6,6 +6,6 @@ module.exports = {
         "url": "mongodb://mongo-server/geolocalization_db"
     },
     "prod" : {
-        "url": "mongo ds213705.mlab.com:13705/geolocalization_db -u  -p "
+        "url": "mongodb://test:test123@ds213705.mlab.com:13705/geolocalization_db"
     }
 }

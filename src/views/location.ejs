@@ -78,9 +78,17 @@
 			    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 		        id: 'mapbox.streets'
             }).addTo(mymap);
+            var poly = [];
             for(var i = 0; i < initLati.length; ++i){
+                poly.push([initLati[i], initLong[i]]);
                 var marker = L.marker([initLati[i], initLong[i]]).addTo(mymap);
             }
+            var pathLine = L.polyline(poly).addTo(mymap);
+            pathLine.setStyle({
+              color: 'red',
+              lineCap: 'square',
+              dashArray: '5, 10'
+            });
         </script>
         <script type="text/javascript">
             $("#strack").click((e) => {
@@ -106,7 +114,7 @@
                         formData.latitude = latitude;
                         formData.user = "<%=user.local.email %>";
                         formData.curdate = Date.now();
-                        //alert("Tracking " + JSON.stringify(formData));
+                        alert("Tracking " + JSON.stringify(formData));
                         $.ajax({
                             type: 'POST',
                             contentType : "application/json",
