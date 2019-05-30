@@ -18,6 +18,7 @@ console.log(process.env['NODE_ENV']);
 const enviroment = process.env['NODE_ENV'] || "dev";
 
 var url = dbconf[enviroment].url;
+console.log(url)
 mongoose.connect(url, function(err){
     if(!err){
         console.log("Connection to db has been executed successfully");

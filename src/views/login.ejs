@@ -6,6 +6,40 @@
         <% include helpers/head %>
     </head>
     <body>
+        
+        <script>
+            window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '401028283959541',
+                cookie     : true,
+                xfbml      : true,
+                version    : '3.3'
+            });
+            
+            FB.AppEvents.logPageView();    
+        };
+      
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+
+        
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        </script>
+        
         <div class="container">
             <div class="col-sm-6 mx-auto">
                 <div class="card mt-5">
@@ -29,6 +63,7 @@
                             </div>
                             <input type="submit" class="btn btn-success btn-lg">
                         </form>
+                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>
                         <hr>
                         <div class="text-center">
                             <p>¿Necesitas una cuenta? <a href="/signup">Registrarse</a></p>
